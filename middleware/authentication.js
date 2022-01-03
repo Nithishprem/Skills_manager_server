@@ -4,15 +4,15 @@ const jwt = require("jsonwebtoken")
 const {UnauthenticatedError} = require('../errors')
 
 const authMiddleware = (req,res,next) => {
-    //check header
-    // const authHeader = req.headers.authorization
+    // check header
+    const authHeader = req.headers.authorization
 
-    // if(!authHeader || !authHeader.startsWith("Bearer ")){
-    //     throw new UnauthenticatedError('Authentication Invalid')
-    // }
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
+        throw new UnauthenticatedError('Authentication Invalid')
+    }
 
-    // const token = authHeader.split(' ')[1]
-    const token = req.cookies.token
+    const token = authHeader.split(' ')[1]
+    // const token = req.cookies.token
 
 
     try{

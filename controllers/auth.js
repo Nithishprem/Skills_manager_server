@@ -36,7 +36,9 @@ const login = async (req,res) => {
     const oneDay = 24*60*60*1000
     res.cookie('token', token, {
         httpOnly:true,
-        expires:new Date(Date.now()+oneDay )
+        
+        expires:new Date(Date.now()+oneDay ),
+        SameSite: 'None'
     })
     res.status(StatusCodes.OK).json({user:{name: user.name}, token})
 }
