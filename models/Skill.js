@@ -6,6 +6,10 @@ const SkillSchema = new mongoose.Schema({
         required: [true, 'Please provide skill name'],
         maxLength: 50
     },
+    expertSkill: {
+        type: Boolean,
+        default: false
+    },
     level: {
         type: String,
         required: [true, 'Please provide skill level'],
