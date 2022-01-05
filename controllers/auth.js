@@ -5,11 +5,11 @@ const{ BadRequestError, UnauthenticatedError} =require("../errors")
 const register = async (req,res) => {
     const user = await User.create({...req.body})
     const token = user.createJWT()
-    const oneDay = 24*60*60*1000
-    res.cookie('token', token, {
-        httpOnly:true,
-        expires:new Date(Date.now()+oneDay )
-    })
+//     const oneDay = 24*60*60*1000
+//     res.cookie('token', token, {
+//         httpOnly:true,
+//         expires:new Date(Date.now()+oneDay )
+//     })
     res.status(StatusCodes.CREATED).json({user:{name: user.name}, token})
 }
 
@@ -33,13 +33,14 @@ const login = async (req,res) => {
     }
 
     const token = user.createJWT()
-    const oneDay = 24*60*60*1000
-    res.cookie('token', token, {
-        httpOnly:true,
+    //set a cookie
+    // const oneDay = 24*60*60*1000
+    // res.cookie('token', token, {
+    //     httpOnly:true,
         
-        expires:new Date(Date.now()+oneDay ),
-        SameSite: 'None'
-    })
+    //     expires:new Date(Date.now()+oneDay ),
+    //     SameSite: 'None'
+    // })
     res.status(StatusCodes.OK).json({user:{name: user.name}, token})
 }
 
