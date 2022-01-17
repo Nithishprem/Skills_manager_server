@@ -16,7 +16,7 @@ const authMiddleware = require('./middleware/authentication');
 
 
 app.use(express.json())
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(cors())
 
 const authRouter = require('./routes/auth')
